@@ -12,6 +12,8 @@ const useSendMessage = () => {
 			const user = JSON.parse(localStorage.getItem("chat-user"));
 			const token = user?.token;
 
+			console.log("Token retrieved:", token);
+
 			if (!token) {
 				throw new Error("No token found");
 			}
