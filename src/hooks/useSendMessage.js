@@ -12,6 +12,11 @@ const useSendMessage = () => {
 			const user = JSON.parse(localStorage.getItem("chat-user"));
 			const token = user?.token;
 
+			if (!token) {
+				throw new Error("No token found");
+			}
+
+
 
 
 			const res = await fetch(`https://chataviax.onrender.com/api/messages/send/${selectedConversation._id}`, {
