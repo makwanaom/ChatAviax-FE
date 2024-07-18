@@ -11,7 +11,15 @@ const useGetMessages = () => {
 		const getMessages = async () => {
 			setLoading(true);
 			try {
-				const res = await fetch(`https://chataviax.onrender.com/api/messages/${selectedConversation._id}`);
+				const user = JSON.parse(localStorage.getItem("chat-user"));
+				const token = user?.token;
+
+
+				const res = await fetch(`https://chataviax.onrender.com/api/messages/${selectedConversation._id}`, {
+					headers: {
+						"Authorization": `Bearer ${token}`
+					}
+				});
 				const data = await res.json();
 				if (data.error) throw new Error(data.error);
 				setMessages(data);

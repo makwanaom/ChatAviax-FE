@@ -9,10 +9,16 @@ const useSendMessage = () => {
 	const sendMessage = async (message) => {
 		setLoading(true);
 		try {
+			const user = JSON.parse(localStorage.getItem("chat-user"));
+			const token = user?.token;
+
+
+
 			const res = await fetch(`https://chataviax.onrender.com/api/messages/send/${selectedConversation._id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
+					"Authorization": `Bearer ${token}`
 				},
 				body: JSON.stringify({ message }),
 			});
