@@ -24,7 +24,8 @@ const useGetConversations = () => {
                 const res = await fetch("https://chataviax.onrender.com/api/users"  , {
 					headers: {
 						"Authorization": `Bearer ${token}`
-                    }
+                    },
+                    credentials: 'include'
 					});
                 const data = await res.json();
                 if (data.error) {

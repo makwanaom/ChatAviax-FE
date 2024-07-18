@@ -25,7 +25,8 @@ const useGetMessages = () => {
 				const res = await fetch(`https://chataviax.onrender.com/api/messages/${selectedConversation._id}`, {
 					headers: {
 						"Authorization": `Bearer ${token}`
-					}
+					},
+					credentials: 'include'
 				});
 				const data = await res.json();
 				if (data.error) throw new Error(data.error);
