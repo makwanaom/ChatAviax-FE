@@ -15,15 +15,14 @@ const useSignup = () => {
         setLoading(true);
 
         try{
-            const user = JSON.parse(localStorage.getItem("chat-user"));
-            const token = user?.token; // Retrieve token if available
+           
 
 
           const res = await fetch("https://chataviax.onrender.com/api/auth/signup" , {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Authorization": `Bearer ${token}` // Include token
+              
             },
             body: JSON.stringify({fullName, username, password, confirmPassword, gender})
           });

@@ -9,14 +9,7 @@ const useSendMessage = () => {
 	const sendMessage = async (message) => {
 		setLoading(true);
 		try {
-			const user = JSON.parse(localStorage.getItem("chat-user"));
-			const token = user?.token;
-
-			console.log("Token retrieved:", token);
-
-			if (!token) {
-				throw new Error("No token found");
-			}
+			
 
 
 
@@ -25,8 +18,8 @@ const useSendMessage = () => {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
-					"Authorization": `Bearer ${token}`,
-					credentials: 'include'
+					
+					
 				},
 				body: JSON.stringify({ message }),
 			});

@@ -11,23 +11,10 @@ const useGetMessages = () => {
 		const getMessages = async () => {
 			setLoading(true);
 			try {
-				const user = JSON.parse(localStorage.getItem("chat-user"));
-				const token = user?.token;
+				
 
 
-				console.log("Token retrieved:", token);
-
-				if (!token) {
-					throw new Error("No token found");
-				}
-
-
-				const res = await fetch(`https://chataviax.onrender.com/api/messages/${selectedConversation._id}`, {
-					headers: {
-						"Authorization": `Bearer ${token}`
-					},
-					credentials: 'include'
-				});
+				const res = await fetch(`https://chataviax.onrender.com/api/messages/${selectedConversation._id}`);
 				const data = await res.json();
 				if (data.error) throw new Error(data.error);
 				setMessages(data);

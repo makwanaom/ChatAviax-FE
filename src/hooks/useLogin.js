@@ -15,7 +15,7 @@ const useLogin = () => {
 				method: "POST",
 				headers: { "Content-Type": "application/json" },
 				body: JSON.stringify({ username, password }),
-				credentials: 'include'
+				
 			});
 
 			const data = await res.json();
@@ -23,7 +23,7 @@ const useLogin = () => {
 				throw new Error(data.error);
 			}
 
-			console.log("Login response data:", data);
+			
 
 			localStorage.setItem("chat-user", JSON.stringify(data));
 			setAuthUser(data);
